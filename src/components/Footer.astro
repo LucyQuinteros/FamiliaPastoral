@@ -1,0 +1,105 @@
+---
+// src/components/Footer.astro
+const today = new Date();
+---
+
+<footer id="footer" class="footer">
+  <div class="footer-container">
+    
+    <div class="footer-content">
+      <h3 class="footer-title">Me & Family</h3>
+      <p>Guardando momentos, compartiendo fe y celebrando la vida juntos cada día.</p>
+    </div>
+
+    <div class="social-links">
+      <a href="#" aria-label="Twitter"><i class="bi bi-twitter-x"></i></a>
+      <a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+      <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+      <a href="#" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+    </div>
+
+    <div class="copyright">
+      &copy; {today.getFullYear()} <strong>Me & Family</strong>. Todos los derechos reservados.
+    </div>
+    
+  </div>
+</footer>
+
+<style>
+  /* Contenedor principal del Footer */
+  .footer {
+    background-color: #293441; /* Mismo color del Header */
+    color: #fff;
+    padding: 50px 0 30px 0;
+    margin-top: 60px; /* Espacio para separarlo del contenido anterior */
+    
+    /* --- EL TOQUE DE DISEÑO --- */
+    /* Redondeamos solo las esquinas de arriba para hacer juego con el Header */
+    border-radius: 20px 20px 0 0; 
+  }
+
+  .footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+  }
+
+  .footer-title {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    font-family: 'Raleway', sans-serif;
+  }
+
+  .footer-content p {
+    font-size: 15px;
+    color: rgba(255, 255, 255, 0.7);
+    max-width: 600px;
+    margin: 0 auto;
+    font-style: italic;
+  }
+
+  /* Redes Sociales */
+  .social-links {
+    display: flex;
+    gap: 15px;
+    margin: 10px 0;
+  }
+
+  .social-links a {
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%; /* Círculos perfectos */
+    transition: all 0.3s ease;
+    font-size: 18px;
+    text-decoration: none;
+  }
+
+  .social-links a:hover {
+    background: #ff4a4a; /* Tu color de acento */
+    transform: translateY(-5px); /* Pequeño salto al pasar el mouse */
+  }
+
+  /* Línea final y Copyright */
+  .copyright {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 20px;
+    width: 100%;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.6);
+  }
+
+  .copyright strong {
+    color: #fff;
+  }
+</style>

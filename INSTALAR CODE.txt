@@ -1,0 +1,3 @@
+npm install aos
+npm install swiper
+npm install glightbox

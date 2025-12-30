@@ -1,0 +1,20 @@
+:root {
+  --color-default: #212529;
+  --color-primary: #ff4a4a; /* Ajusta al color de tu plantilla */
+  --color-secondary: #37423b;
+  --font-primary: 'Roboto', sans-serif;
+}
+
+body {
+  font-family: var(--font-primary);
+  color: var(--color-default);
+  margin: 0;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+img { max-width: 100%; height: auto; }

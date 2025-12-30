@@ -1,0 +1,184 @@
+---
+// src/components/Header.astro
+---
+<header id="header" class="header-container">
+  <div class="nav-wrapper">
+        
+    <a href="/" class="logo">
+      <img src="/assets/img/LogoFamiliaPastoral.png" alt="Logo" class="logo-img" />
+      <h1 class="sitename">Familia Pastoral</h1>
+    </a>
+
+    <nav id="navmenu" class="navmenu">
+      <ul class="nav-list">
+        <li><a href="/" class="active">Inicio</a></li>
+        <li><a href="/nosotros">Nosotros</a></li>
+        <li><a href="/eventos">Eventos</a></li>
+        <li><a href="/galeria">Galería</a></li>
+        <li><a href="/blog">Blog</a><li>
+        <li class="dropdown">
+          <a href="#">
+            <span>Pilares</span> 
+            <i class="bi bi-chevron-down"></i>
+          </a>
+          <ul class="dropdown-menu">
+                <li class="dropdown"><a href="#"><span>Vida Personal</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+                <ul>
+                  <li><a href="/vision-vida">Visión de Vida</a></li>
+                  <li><a href="#">Hábitos Saludables</a></li>
+                  <li><a href="#">Trabajo Ministerial</a></li>
+                </ul>
+              </li>
+            <li>
+              <a href="#">
+                <i class="bi bi-heart-fill"></i> Vida Matrimonial
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <i class="bi bi-emoji-smile-fill"></i> Crianza de Hijos
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <i class="bi bi-people-fill"></i> Familia Extendida
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li><a href="/contact" class="contact-link">Contact</a></li>
+      </ul>
+      
+      <button class="mobile-nav-toggle" aria-label="Menu">
+        <i class="bi bi-list"></i>
+      </button>
+    </nav>
+
+  </div>
+</header>
+
+<style>
+  /* 1. Contenedor Principal (Sticky) - AHORA CON EL COLOR DE FONDO TOTAL */
+  .header-container {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    height: 80px;
+    background-color: #293441; /* Color azulado oscuro aplicado a todo el ancho */
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.15);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    border-radius: 10px 10px 0 0;
+  }
+
+  /* 2. El Wrapper que ahora ocupa el 100% sin límites */
+  .nav-wrapper {
+    width: 100%;
+    /* max-width: 1200px;  <-- Borramos o comentamos esta línea */
+    padding: 0 40px; /* Un poco más de margen a los lados para que no toque los bordes */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+/* 3. Logo */
+  .logo {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .logo h1 {
+    font-size: 26px;
+    font-weight: 700;
+    color: #fff;
+    margin: 0;
+    font-family: 'Raleway', sans-serif;
+  }
+
+  .logo-img {
+    /* ANTES: 60px -> AHORA: 70px (Aumento del ~15%) */
+    height: 100px; 
+    width: auto;
+    display: block;
+    object-fit: contain;
+  }
+
+
+  /* 4. Lista de Navegación */
+  .nav-list {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+    margin: 0;
+    padding: 0;
+  }
+
+  .nav-list a {
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.6);
+    font-weight: 500;
+    font-size: 16px;
+    transition: color 0.3s;
+  }
+
+  .nav-list a:hover, .nav-list a.active {
+    color: #fff;
+  }
+
+  /* 5. Dropdown Simple */
+  .dropdown {
+    position: relative;
+  }
+
+  .dropdown-menu {
+    position: absolute;
+    top: 100%;
+    right: 0; /* Cambiado a right para que no se salga de la pantalla si el menu está muy a la derecha */
+    background: #fff;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    display: none;
+    list-style: none;
+    padding: 10px 0;
+    min-width: 180px;
+    border-radius: 4px;
+  }
+
+  .dropdown-menu a {
+    color: #333 !important; /* Texto oscuro para el fondo blanco del dropdown */
+    padding: 10px 20px;
+    display: block;
+    width:120px!important;
+    min-width: 180px!important; /* Aumentado de 180px a 260px para que los textos largos entren cómodos */
+    border-radius: 4px;
+  }
+
+  .dropdown:hover .dropdown-menu {
+    display: block;
+  }
+
+  /* 6. Menú Móvil */
+  .mobile-nav-toggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 28px;
+    cursor: pointer;
+    color: #fff; /* Icono blanco para resaltar */
+  }
+
+  /* 7. RESPONSIVE */
+  @media (max-width: 992px) {
+    .nav-list {
+      display: none;
+    }
+    .mobile-nav-toggle {
+      display: block;
+    }
+    .nav-wrapper {
+      padding: 0 20px;
+    }
+  }
+</style>

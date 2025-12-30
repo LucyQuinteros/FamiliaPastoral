@@ -1,0 +1,79 @@
+---
+// src/layouts/Layout.astro
+import '../styles/main.css';
+import '../styles/subpages.css';
+// Si tienes un archivo de estilos compartidos, descomenta la siguiente línea:
+// import '../styles/shared.css'; 
+
+// Importamos la herramienta de transiciones (Astro 5.0)
+// Si te da error, cambia 'ClientRouter' por 'ViewTransitions'
+import { ClientRouter } from 'astro:transitions'; 
+
+// --- IMPORTAMOS LAS PIEZAS COMUNES ---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>{title}</title>
+  
+  <ClientRouter />
+
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Poppins:wght@400;600&family=Raleway:wght@700&display=swap" rel="stylesheet">
+
+  <link href="/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="/assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  <link href="/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+</head>
+
+<body class="index-page">
+
+  <Header />
+
+  <slot />
+
+  <Footer />
+
+  <script is:inline src="/assets/vendor/aos/aos.js"></script>
+  <script is:inline src="/assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script is:inline src="/assets/vendor/swiper/swiper-bundle.min.js"></script>
+
+  <script is:inline>
+    /**
+     * Esta función inicia las animaciones.
+     * La separamos para poder llamarla cada vez que Astro cambia de página.
+     */
+    function initGlobalScripts() {
+      // Iniciar AOS (Animaciones al hacer scroll)
+      if (typeof AOS !== 'undefined') {
+        AOS.init({
+          duration: 600,
+          easing: 'ease-in-out',
+          once: true,
+          mirror: false
+        });
+      }
+    }
+
+    // Ejecutar cuando la página carga por primera vez
+    document.addEventListener('DOMContentLoaded', initGlobalScripts);
+    
+    // Ejecutar cada vez que navegamos a otra página (Gracias a ClientRouter)
+    document.addEventListener('astro:page-load', initGlobalScripts);
+  </script>
+
+</body>
+</html>

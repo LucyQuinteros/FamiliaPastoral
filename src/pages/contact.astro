@@ -1,0 +1,161 @@
+---
+import Layout from '../layouts/MainLayout.astro';
+---
+
+<Layout title="Contact - Me & Family">
+  <main class="main-content">
+    <div class="page-header">
+      <div class="container">
+        <h1>Contact Us</h1>
+      </div>
+    </div>
+
+    <section class="contact-section">
+      <div class="container">
+        
+        <div class="map-container" data-aos="fade-up">
+          <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3023.2321471017834!2d-74.00845182414614!3d40.73595677138988!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25990998393bb%3A0x6b1859816f1b402!2sAdam%20St%2C%20New%20York%2C%20NY%2C%20USA!5e0!3m2!1sen!2s!4v1715632148000!5m2!1sen!2s" 
+            style="border:0; width: 100%; height: 350px;" 
+            allowfullscreen="" 
+            loading="lazy" 
+            referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+        </div>
+
+        <div class="contact-grid">
+          <div class="contact-info" data-aos="fade-right">
+            <div class="info-item">
+              <i class="bi bi-geo-alt"></i>
+              <div>
+                <h3>Address</h3>
+                <p>A108 Adam Street, New York, NY 535022</p>
+              </div>
+            </div>
+
+            <div class="info-item">
+              <i class="bi bi-telephone"></i>
+              <div>
+                <h3>Call Us</h3>
+                <p>+1 5589 55488 55</p>
+              </div>
+            </div>
+
+            <div class="info-item">
+              <i class="bi bi-envelope"></i>
+              <div>
+                <h3>Email Us</h3>
+                <p>info@example.com</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="contact-form-wrapper" data-aos="fade-left">
+            <form class="contact-form">
+              <div class="row-flex">
+                <input type="text" name="name" placeholder="Your Name" required />
+                <input type="email" name="email" placeholder="Your Email" required />
+              </div>
+              <input type="text" name="subject" placeholder="Subject" required />
+              <textarea name="message" rows="6" placeholder="Message" required></textarea>
+              <div class="text-center">
+                <button type="submit">Send Message</button>
+              </div>
+            </form>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+</Layout>
+
+<style>
+
+  /* --- Mapa --- */
+  .map-container {
+    margin-bottom: 40px;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+  }
+
+  /* --- Grid Principal --- */
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 40px;
+    padding-bottom: 60px;
+  }
+
+  /* --- Info Items --- */
+  .info-item {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 30px;
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+  }
+  .info-item i {
+    font-size: 24px;
+    color: #744aff;
+    background: #fff5f5;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+  }
+  .info-item h3 { font-size: 18px; margin-bottom: 5px; color: #444; }
+  .info-item p { color: #777; font-size: 14px; margin: 0; }
+
+  /* --- Formulario --- */
+  .contact-form {
+    background: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .row-flex {
+    display: flex;
+    gap: 20px;
+  }
+  .row-flex input { flex: 1; }
+
+  input, textarea {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-family: inherit;
+    font-size: 15px;
+    outline: none;
+    transition: border-color 0.3s;
+  }
+  input:focus, textarea:focus { border-color: #ff4a4a; }
+
+  button {
+    background: #006fbe;
+    color: white;
+    border: none;
+    padding: 12px 35px;
+    border-radius: 50px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: 0.3s;
+  }
+  button:hover { background: #006fbe; }
+  .text-center { text-align: center; }
+
+  /* --- Responsive --- */
+  @media (max-width: 992px) {
+    .contact-grid { grid-template-columns: 1fr; }
+    .row-flex { flex-direction: column; gap: 20px; }
+  }
+</style>

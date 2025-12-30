@@ -1,0 +1,145 @@
+---
+/* Hero.astro - Versión Profesional Modular */
+---
+<section id="hero" class="hero section">
+  <div class="swiper myHeroSwiper">
+    <div class="swiper-wrapper">
+      
+      <div class="swiper-slide">
+        <img src="/assets/img/hero-carousel/hero-carousel-1.jpg" alt="Familia" />
+        <div class="hero-overlay">
+          <div class="container">
+            <h2 data-aos="fade-down">Bienvenidos a Famlia Pastoral</h2>
+            <p data-aos="fade-up">¡Cuidando de quienes nos Cuidan!</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="swiper-slide">
+        <img src="/assets/img/hero-carousel/hero-carousel-2.jpg" alt="Historia" />
+      </div>
+
+      <div class="swiper-slide">
+        <img src="/assets/img/hero-carousel/hero-carousel-3.jpg" alt="Historia" />
+        <!-- <div class="hero-overlay">
+          <div class="container">
+            <h2>Nuestra Historia</h2>
+            <p>Un legado que trasciende el tiempo.</p>
+          </div>
+        </div>
+        -->
+      </div>
+
+
+    </div>
+    
+    <div class="swiper-pagination"></div>
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
+  </div>
+</section>
+
+
+<script>
+  import Swiper from 'swiper';
+  import { Navigation, Pagination, Autoplay } from 'swiper/modules';
+
+  // Importar los estilos básicos de Swiper para que se vea bien
+  import 'swiper/css';
+  import 'swiper/css/navigation';
+  import 'swiper/css/pagination';
+
+  const initHero = () => {
+    const swiperEl = document.querySelector('.myHeroSwiper');
+    if (swiperEl) {
+      new Swiper('.myHeroSwiper', {
+        modules: [Navigation, Pagination, Autoplay],
+        loop: true,
+        autoplay: { delay: 5000 },
+        pagination: { el: '.swiper-pagination', clickable: true },
+        navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
+      });
+    }
+  };
+
+  // En Astro, para asegurar que funcione tras navegar entre páginas
+  document.addEventListener('astro:page-load', initHero);
+  // Para la primera carga
+  initHero();
+</script>
+
+
+
+<style>
+  .hero {
+    width: 100%;
+    height: 80vh;
+    position: relative;
+    overflow: hidden;
+  }
+  .swiper {
+    width: 100%;
+    height: 100%;
+    /* --- COLORES DEL NAVEGADOR --- */
+    --swiper-theme-color: #fff; /* Color de puntos activos */
+    --swiper-pagination-bullet-inactive-color: #ffffff;
+    --swiper-pagination-bullet-inactive-opacity: 0.5;
+    --swiper-navigation-size: 30px; /* Tamaño de las flechas */
+  }
+  .swiper-slide {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .swiper-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+    color: white;
+    text-align: center;
+  }
+  h2 { font-size: 3rem; margin-bottom: 1rem; font-weight: 700; color: #fff;}
+  p { font-size: 1.2rem; }
+
+  /* --- ESTILO Y DISTANCIA DE LAS FLECHAS --- */
+  .swiper-button-next,
+  .swiper-button-prev {
+    font-weight: bold;
+    text-shadow: 0px 0px 5px rgba(0,0,0,0.5);
+    color: rgba(255, 255, 255, 0.5) !important;
+    transition: all 0.3s ease;
+    /* Control de distancia al borde */
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  .swiper-button-prev {
+    left: 20px !important; /* Distancia desde la izquierda */
+  }
+
+  .swiper-button-next {
+    right: 20px !important; /* Distancia desde la derecha */
+  }
+
+  /* Estado al pasar el mouse */
+  .swiper-button-next:hover,
+  .swiper-button-prev:hover {
+    color: #ffffff !important;
+    transform: translateY(-50%) scale(1.1); /* Mantiene el centrado y crece un poco */
+  }
+
+  .swiper-pagination-bullet {
+    transition: all 0.3s ease;
+    margin: 0 5px !important;
+  }
+</style>

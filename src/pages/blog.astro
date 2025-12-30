@@ -1,0 +1,175 @@
+---
+import Layout from '../layouts/MainLayout.astro';
+
+// Datos de los posts para automatizar el diseño
+const posts = [
+  {
+    id: 1,
+    category: 'Familia',
+    title: 'Consejos para fortalecer la unión familiar',
+    author: 'Maria Doe',
+    date: 'Jan 1, 2024',
+    authorImg: '/assets/img/blog/blog-author.jpg'
+  },
+  {
+    id: 2,
+    category: 'Eventos',
+    title: 'Cómo planeamos nuestro último retiro espiritual',
+    author: 'Allisa Mayer',
+    date: 'Jun 5, 2024',
+    authorImg: '/assets/img/blog/blog-author-2.jpg'
+  },
+  {
+    id: 3,
+    category: 'Reflexión',
+    title: 'El valor de la gratitud en el hogar',
+    author: 'Mark Dower',
+    date: 'Jun 22, 2024',
+    authorImg: '/assets/img/blog/blog-author-3.jpg'
+  },
+  {
+    id: 4,
+    category: 'Vida',
+    title: 'Educando con valores en un mundo digital',
+    author: 'Lisa Neymar',
+    date: 'Jun 30, 2024',
+    authorImg: '/assets/img/blog/blog-author-4.jpg'
+  }
+];
+---
+
+<Layout title="Blog - Me & Family">
+  <main class="main-content">
+    <div class="page-header">
+      <div class="container">
+        <h1>Blog</h1>
+      </div>
+    </div>
+
+    <section class="blog-section">
+      <div class="container">
+        <div class="blog-grid">
+          {posts.map((post) => (
+            <article class="post-card" data-aos="fade-up">
+              <div class="post-img">
+                <img src={`/assets/img/blog/blog-${post.id}.jpg`} alt={post.title} />
+              </div>
+
+              <div class="post-content">
+                <span class="category">{post.category}</span>
+                <h2 class="title">
+                  <a href="#">{post.title}</a>
+                </h2>
+
+                <div class="author-info">
+                  <img src={post.authorImg} alt={post.author} class="author-img" />
+                  <div class="meta">
+                    <p class="name">{post.author}</p>
+                    <p class="date">{post.date}</p>
+                  </div>
+                </div>
+              </div>
+            </article>
+          ))}
+        </div>
+
+        <div class="pagination">
+          <ul>
+            <li><a href="#"><i class="bi bi-chevron-left"></i></a></li>
+            <li><a href="#">1</a></li>
+            <li><a href="#" class="active">2</a></li>
+            <li><a href="#">3</a></li>
+            <li><a href="#"><i class="bi bi-chevron-right"></i></a></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>
+
+<style>
+  /* --- Grid de Blog --- */
+  .blog-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 30px;
+    margin-bottom: 50px;
+  }
+
+  .post-card {
+    background: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 25px rgba(0,0,0,0.05);
+    transition: transform 0.3s;
+  }
+
+  .post-card:hover { transform: translateY(-10px); }
+
+  .post-img img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+  }
+
+  .post-content { padding: 25px; }
+
+  .category {
+    color: #888;
+    font-size: 13px;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+
+  .title {
+    font-size: 20px;
+    margin: 10px 0 20px 0;
+    line-height: 1.4;
+  }
+  .title a { 
+    text-decoration: none; 
+    color: #333; 
+    transition: color 0.3s;
+  }
+  .title a:hover { color: #ff4a4a; }
+
+  /* --- Autor Meta --- */
+  .author-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding-top: 15px;
+    border-top: 1px solid #eee;
+  }
+
+  .author-img {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  .name { font-weight: 600; font-size: 14px; margin: 0; color: #444; }
+  .date { font-size: 12px; color: #999; margin: 0; }
+
+  /* --- Paginación --- */
+  .pagination { display: flex; justify-content: center; padding: 40px 0; }
+  .pagination ul { list-style: none; display: flex; gap: 10px; padding: 0; }
+  .pagination a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border: 1px solid #eee;
+    text-decoration: none;
+    color: #555;
+    border-radius: 5px;
+    transition: 0.3s;
+  }
+  .pagination a.active, .pagination a:hover {
+    background: #ff4a4a;
+    color: #fff;
+    border-color: #ff4a4a;
+  }
+</style>

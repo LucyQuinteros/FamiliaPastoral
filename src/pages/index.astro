@@ -1,0 +1,133 @@
+---
+import Layout from '../layouts/MainLayout.astro';
+import Hero from '../components/Hero.astro';
+---
+
+<Layout title="Me & Family - Astro Version">
+  <main class="main-content">
+    <Hero />
+
+    <section id="about" class="about section">
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Famlia Pastoral</h2>
+        <p class="about-text">
+          <span class="italic">¡Cuidando de quienes nos Cuidan!</span>
+        </p>
+        <p>... y nos dio el ministerio de la reconciliación, que Dios setaba en Cristo
+          reconciliando consigo al mundo, <br>no tomándoles en cuenta a los hombres sus 
+          pecados, y nos encargó a nosotros la palabra de la reconciliación.
+          <br>2 Corintios 5:18-19
+        </p>
+      </div>
+    </section>
+
+    
+    <section class="about-section">
+      <div class="container grid-2">
+        <div class="about-img" data-aos="fade-right">
+          <img src="/assets/img/about.jpg" alt="Familia" />
+        </div>
+        <div class="about-text" data-aos="fade-left">
+          <h1>Visión</h1>
+          <ul>
+            <li><i class="bi bi-check2-all"></i> 
+              Ver familias pastorales honrar a Dios 
+              en sus relaciones intrafamiliares. A través de vínculos Fuertes de unidad 
+              y compromiso entre sí y con el desarrollo eclesial.</li>
+          </ul>
+        </div>
+      </div>
+
+
+      <div class="feature-item grid-2 reverse" data-aos="fade-up">
+        <div class="feature-img">
+          <img src="/assets/img/featured-members-2.jpg" alt="Miembro 2" />
+        </div>
+        <div class="about-text" data-aos="fade-left">
+          <h1>Misión</h1>
+          <ul>
+            <li><i class="bi bi-check2-all"></i> 
+              Alentar el fortalecimiento de las familias pastorales y misioneras, 
+              dando herramientas y acompañándolos en procesos preventivos y 
+              correctivos.</li>
+          </ul>
+        </div>
+      </div>
+
+
+      <div class="container grid-1">
+        <div class="about-text centrado" data-aos="fade-left">
+          <h1>Propósito</h1>
+          <ul>
+            <li>
+              <i class="bi bi-check2-all"></i> 
+              www.Familiapastoral.com tiene como objetivo principal que pastores 
+              encuentren fácilmente buena información que les ayude consistentemente 
+              en su desarrollo personal, familiar y ministerial.
+            </li>
+            <li>
+              <i class="bi bi-check2-all"></i>
+              Aportar herramientas prácticas para descubrir y resaltar su individualidad, 
+              la de su familia e iglesia.
+            <li>
+              <i class="bi bi-check2-all"></i>
+              Brindar la posibilidad de encontrar consejería personal y familiar 
+              especializada; y grupos de mentoreo.
+            </li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    
+  </main>
+</MainLayout>
+
+<style>
+  
+  .grid-2 {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    align-items: center;
+    margin-bottom: 60px;
+  }
+
+  .grid-2 > div {
+    flex: 1;
+    min-width: 300px;
+  }
+
+  .centrado{
+    padding: 0 100px 0 100px
+  }
+
+  /* --- Sección About --- */
+  .about-section { padding: 30px 0; text-align: center; font-size: 20px;}
+  .about-img img { width: 100%; border-radius: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+  
+  .about-text h3 { font-size: 28px; color: #333; margin-bottom: 20px; }
+  .about-text .italic { font-style: italic; color: #666; margin-bottom: 20px; }
+  
+  .about-text ul { list-style: none; padding: 0; }
+  .about-text ul li { margin-bottom: 15px; display: flex; align-items: flex-start; gap: 10px; }
+  .about-text ul i { color: #006fbe; font-size: 20px; }
+
+  /* --- Features (Zig-Zag) --- */
+  .features-section { background: #fff; padding: 60px 0; }
+  .feature-item img { width: 100%; border-radius: 8px; }
+  
+  /* Clase para invertir el orden en escritorio */
+  @media (min-width: 768px) {
+    .reverse { flex-direction: row-reverse; }
+  }
+
+  .feature-info h3 { font-size: 24px; margin-bottom: 15px; }
+
+  /* --- Responsive --- */
+  @media (max-width: 768px) {
+    .grid-2 { flex-direction: column; text-align: center; }
+    .about-text ul li { text-align: left; }
+  }
+</style>

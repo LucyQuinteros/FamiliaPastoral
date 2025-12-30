@@ -1,0 +1,55 @@
+/* src/styles/subpages.css */
+
+/* 1. Contenedores estándar */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.container-fluid {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* 2. Cabecera de Página (Page Title / Breadcrumbs) */
+.page-header {
+  background-color: #fff;
+  padding: 30px 0;
+  margin-bottom: 0px;
+  text-align: center;
+}
+
+.page-header .container h1 {
+  font-size: 28px;
+  font-weight: 700;
+  color: #333;
+  margin: 0;
+}
+
+.breadcrumbs {
+  font-size: 14px;
+  color: #888;
+  margin-top: 8px;
+}
+
+.breadcrumbs a {
+  color: #ff4a4a;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.breadcrumbs a:hover {
+  text-decoration: underline;
+}
+
+/* 3. Ajuste para el contenido principal (para que no lo tape el header sticky) */
+.main-content {
+  min-height: 80vh;
+}
+
+/* 4. Espaciado general de secciones */
+.section-padding {
+  padding: 60px 0;
+}
