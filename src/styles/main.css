@@ -619,18 +619,30 @@ section,
   position: relative;
 }
 
-.section-title h2:after {
-  content: "";
-  position: absolute;
-  display: block;
-  width: 50px;
-  height: 3px;
-  background: var(--accent-color);
-  left: 0;
-  right: 0;
-  bottom: 0;
-  margin: auto;
-}
+/* 1. CLASE BASE (Ya la tenías, no la toques, esto configura todo) */
+  .section-title h2:after {
+    content: "";
+    position: absolute;
+    display: block;
+    width: 300px;  /* Ancho por defecto */
+    height: 3px;
+    background: var(--accent-color, #006fbe);
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+  }
+
+  /* 2. CLASE MODIFICADORA (Solo sobrescribe lo necesario) */
+  /* Nota: Al estar junto a .section-title en el HTML, esto tiene prioridad */
+  .vision-mision h2:after {
+    width: 150px !important; /* Aquí aplicamos el cambio único */
+  }
+
+  /* Si necesitas ajustar márgenes del contenedor también: */
+  .vision-mision h2 {
+    margin-bottom: 15px; /* Ejemplo: si quisieras menos margen que el original */
+  }
 
 .section-title p {
   margin-bottom: 0;

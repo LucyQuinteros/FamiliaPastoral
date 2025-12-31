@@ -1,0 +1,156 @@
+<section id="pilares" class="features-section">
+  <div class="features-container">
+    
+    <div class="section-title vision-mision about-text centrado" data-aos="fade-left">
+      <h2>Pilare de la Vida</h2>
+    </div>
+    
+    <div class="features-grid">
+
+      <div class="feature-card">
+        <div class="icon">
+          <i class="bi bi-activity"></i> 
+        </div>
+        <a href="service-details.html">
+          <h3>Vida Personal</h3>
+        </a>
+        <p>Fortaleciendo el interior para servir mejor en el exterior. 
+          Unimos la visión, la salud y el ministerio para un liderazgo pleno.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="icon">
+          <i class="bi bi-broadcast"></i>
+        </div>
+        <a href="service-details.html">
+          <h3>Vida Matrimonial</h3>
+        </a>
+        <p>Uniendo dos singularidades en un solo propósito mediante dinámicas 
+          de comunicación sanas, una intimidad profunda y una 
+          planificación familiar consciente.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="icon">
+          <i class="bi bi-easel"></i>
+        </div>
+        <a href="service-details.html">
+          <h3>Crianza de Hijos</h3>
+        </a>
+        <p>Formar el carácter cristiano mediante hábitos y disciplina, 
+          adaptándose a la personalidad de cada hijo y atendiendo 
+          con amor las capacidades especiales.</p>
+      </div>
+
+      <div>
+      </div>
+
+      <div class="feature-card">
+        <div class="icon">
+          <i class="bi bi-calendar4-week"></i>
+        </div>
+        <a href="service-details.html">
+          <h3>Familia Extendida</h3>
+        </a>
+        <p>Establecer una convivencia sabia poniendo bases saludables y 
+          realizando los ajustes en la familia necesarios para la unidad.</p>
+      </div>
+
+      <div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<style>
+
+/* --- Contenedor Principal de la Sección --- */
+.features-section {
+  padding: 80px 0;
+  /* background-color: #f6f9ff; // Un gris muy clarito de fondo para que resalten las tarjetas blancas */
+  font-family: sans-serif;
+}
+
+.features-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* --- La Rejilla (Grid) --- */
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+}
+
+/* --- ESTILO DE LA TARJETA (FONDO BLANCO) --- */
+.feature-card {
+  /*background-color: #ffffff; /* Fondo Blanco pedido */
+  padding: 40px 30px; /* Buen espaciado interno */
+  border-radius: 10px; /* Bordes redondeados de la tarjeta */
+  /*box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.05); /* Sombra suave para dar profundidad */
+  text-align: center; /* Centramos todo para que el círculo quede al medio */
+  transition: all 0.3s ease-in-out;
+  /*border: 1px solid #f0f0f0; /* Borde muy sutil opcional */
+}
+
+.feature-card:hover {
+  transform: translateY(-10px); /* La tarjeta sube un poco al pasar el mouse */
+  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* --- EL CÍRCULO DEL ÍCONO (EL EFECTO) --- */
+.feature-card .icon {
+  margin: 0 auto 20px auto; /* Centrado horizontal y margen abajo */
+  width: 80px;  /* Ancho del círculo */
+  height: 80px; /* Alto del círculo */
+  background: #eef7ff; /* Color de fondo del círculo (Azul muy pálido) */
+  border-radius: 50%; /* ESTO CREA EL CÍRCULO PERFECTO */
+  display: flex;
+  align-items: center;  /* Centra el ícono verticalmente */
+  justify-content: center; /* Centra el ícono horizontalmente */
+  transition: all 0.3s ease-in-out;
+  
+  /* Opcional: Un borde sutil o sombra al círculo */
+  box-shadow: 0 0 0 0 rgba(13, 110, 253, 0); 
+}
+
+/* El tamaño y color del dibujo del ícono */
+.feature-card .icon i {
+  font-size: 32px;
+  color: #0d6efd; /* Azul principal */
+  transition: 0.3s;
+}
+
+/* --- EFECTO AL PASAR EL MOUSE (HOVER) --- */
+.feature-card:hover .icon {
+  background: #0d6efd; /* El círculo se vuelve azul sólido */
+  box-shadow: 0 0 0 8px rgba(13, 110, 253, 0.15); /* Efecto de "onda" o aro exterior */
+}
+
+.feature-card:hover .icon i {
+  color: #ffffff; /* El ícono cambia a blanco para contrastar */
+}
+
+/* --- Títulos y Textos --- */
+.feature-card h3 {
+  font-weight: 700;
+  margin-bottom: 15px;
+  font-size: 20px;
+  color: #333;
+}
+
+.feature-card p {
+  color: #666;
+  line-height: 1.6;
+}
+
+.feature-card a {
+  text-decoration: none;
+  color: inherit;
+}
+
+</style>

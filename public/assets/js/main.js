@@ -1,177 +1,69 @@
 /**
-* Template Name: MeFamily
-* Template URL: https://bootstrapmade.com/family-multipurpose-html-bootstrap-template-free/
-* Updated: Aug 07 2024 with Bootstrap v5.3.3
-* Author: BootstrapMade.com
-* License: https://bootstrapmade.com/license/
+* Main.js - Lógica del menú robusta para Astro
 */
 
 (function() {
   "use strict";
 
-  /**
-   * Apply .scrolled class to the body as the page is scrolled down
-   */
-  function toggleScrolled() {
-    const selectBody = document.querySelector('body');
-    const selectHeader = document.querySelector('#header');
-    if (!selectHeader.classList.contains('scroll-up-sticky') && !selectHeader.classList.contains('sticky-top') && !selectHeader.classList.contains('fixed-top')) return;
-    window.scrollY > 100 ? selectBody.classList.add('scrolled') : selectBody.classList.remove('scrolled');
-  }
+  // Función principal que conecta el botón
+  function initMobileNav() {
+    const mobileNavToggleBtn = document.querySelector('.mobile-nav-toggle');
+    const navList = document.querySelector('.nav-list');
+    const body = document.querySelector('body');
 
-  document.addEventListener('scroll', toggleScrolled);
-  window.addEventListener('load', toggleScrolled);
+    // Si no encuentra el botón, salimos para evitar errores
+    if (!mobileNavToggleBtn) return;
 
-  /**
-   * Mobile nav toggle
-   */
-
-// Usamos un bloque para evitar el error de "redeclare"
-{
-  const mobileNavToggleBtn = document.querySelector('.mobile-nav-toggle');
-
-  // Solo ejecutamos el código si el botón REALMENTE existe en la página
-  if (mobileNavToggleBtn) {
+    // LIMPIEZA: Primero removemos cualquier listener viejo para no tener duplicados
+    // Esto es clave para que no falle al segundo intento
+    const newBtn = mobileNavToggleBtn.cloneNode(true);
+    mobileNavToggleBtn.parentNode.replaceChild(newBtn, mobileNavToggleBtn);
     
-    function mobileNavToogle() {
-      const body = document.querySelector('body');
-      if (body) {
-        body.classList.toggle('mobile-nav-active');
-        mobileNavToggleBtn.classList.toggle('bi-list');
-        mobileNavToggleBtn.classList.toggle('bi-x');
+    // Función del toggle
+    function toggleMenu(e) {
+      if(e) e.preventDefault(); // Prevenir comportamientos extraños
+      
+      console.log("Click en menú detectado");
+
+      // 1. Body
+      body.classList.toggle('mobile-nav-active');
+
+      // 2. Lista
+      if (navList) {
+        navList.classList.toggle('mobile-active');
+      }
+
+      // 3. Icono
+      const icon = newBtn.querySelector('i');
+      if (icon) {
+        if (navList && navList.classList.contains('mobile-active')) {
+          icon.classList.remove('bi-list');
+          icon.classList.add('bi-x');
+        } else {
+          icon.classList.remove('bi-x');
+          icon.classList.add('bi-list');
+        }
       }
     }
 
-    // Eliminamos cualquier evento previo para no duplicar y agregamos el nuevo
-    mobileNavToggleBtn.removeEventListener('click', mobileNavToogle);
-    mobileNavToggleBtn.addEventListener('click', mobileNavToogle);
-  }
-}
+    // Conectar el nuevo botón "limpio"
+    newBtn.addEventListener('click', toggleMenu);
 
-
-
-  /**
-   * Hide mobile nav on same-page/hash links
-   */
-  document.querySelectorAll('#navmenu a').forEach(navmenu => {
-    navmenu.addEventListener('click', () => {
-      if (document.querySelector('.mobile-nav-active')) {
-        mobileNavToogle();
-      }
-    });
-
-  });
-
-  /**
-   * Toggle mobile nav dropdowns
-   */
-  document.querySelectorAll('.navmenu .toggle-dropdown').forEach(navmenu => {
-    navmenu.addEventListener('click', function(e) {
-      e.preventDefault();
-      this.parentNode.classList.toggle('active');
-      this.parentNode.nextElementSibling.classList.toggle('dropdown-active');
-      e.stopImmediatePropagation();
-    });
-  });
-
-  /**
-   * Preloader
-   */
-  const preloader = document.querySelector('#preloader');
-  if (preloader) {
-    window.addEventListener('load', () => {
-      preloader.remove();
-    });
-  }
-
-  /**
-   * Scroll top button
-   */
-  let scrollTop = document.querySelector('.scroll-top');
-
-  function toggleScrollTop() {
-    if (scrollTop) {
-      window.scrollY > 100 ? scrollTop.classList.add('active') : scrollTop.classList.remove('active');
-    }
-  }
-
-
-  /**
- * Ejemplo: Probablemente sea el Scroll Top o un Search Toggle
- */
-
-
-{
-  // Usamos var para permitir la re-declaración o simplemente envolvemos en llaves
-  const scrollTop = document.querySelector('.scroll-top');
-
-  if (scrollTop) {
-    scrollTop.addEventListener('click', (e) => {
-      e.preventDefault();
-      window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
+    // Cerrar menú al hacer click en enlaces
+    document.querySelectorAll('.nav-list a').forEach(link => {
+      link.addEventListener('click', () => {
+        if (document.querySelector('.mobile-active')) {
+          toggleMenu(); 
+        }
       });
     });
   }
-}
 
+  // EJECUCIÓN:
+  // 1. Al cargar la página normal
+  document.addEventListener('DOMContentLoaded', initMobileNav);
 
-
-
-  window.addEventListener('load', toggleScrollTop);
-  document.addEventListener('scroll', toggleScrollTop);
-
-  /**
-   * Animation on scroll function and init
-   */
-  function aosInit() {
-    AOS.init({
-      duration: 600,
-      easing: 'ease-in-out',
-      once: true,
-      mirror: false
-    });
-  }
-  window.addEventListener('load', aosInit);
-
-  /**
-   * Auto generate the carousel indicators
-   */
-  document.querySelectorAll('.carousel-indicators').forEach((carouselIndicator) => {
-    carouselIndicator.closest('.carousel').querySelectorAll('.carousel-item').forEach((carouselItem, index) => {
-      if (index === 0) {
-        carouselIndicator.innerHTML += `<li data-bs-target="#${carouselIndicator.closest('.carousel').id}" data-bs-slide-to="${index}" class="active"></li>`;
-      } else {
-        carouselIndicator.innerHTML += `<li data-bs-target="#${carouselIndicator.closest('.carousel').id}" data-bs-slide-to="${index}"></li>`;
-      }
-    });
-  });
-
-  /**
-   * Init swiper sliders
-   */
-  function initSwiper() {
-    document.querySelectorAll(".init-swiper").forEach(function(swiperElement) {
-      let config = JSON.parse(
-        swiperElement.querySelector(".swiper-config").innerHTML.trim()
-      );
-
-      if (swiperElement.classList.contains("swiper-tab")) {
-        initSwiperWithCustomPagination(swiperElement, config);
-      } else {
-        new Swiper(swiperElement, config);
-      }
-    });
-  }
-
-  window.addEventListener("load", initSwiper);
-
-  /**
-   * Initiate glightbox
-   */
-  const glightbox = GLightbox({
-    selector: '.glightbox'
-  });
+  // 2. IMPORTANTE: Al navegar en Astro (View Transitions)
+  document.addEventListener('astro:page-load', initMobileNav);
 
 })();
